@@ -4,8 +4,8 @@ from twilio.rest import Client
 
 def sendsms():  
     # Your Account Sid and Auth Token from twilio.com / console
-    account_sid = 'ACa5ef40f9cb08b23c8401bc9cedcf85ce'
-    auth_token = 'e86be0ebe8b7e6f56c6b60b332b0672b'
+    account_sid = 'YOUR_ACCOUNT_SID'
+    auth_token = 'AUTH_TOKEN'
     
     client = Client(account_sid, auth_token)
     
@@ -15,7 +15,7 @@ def sendsms():
     message = client.messages.create(
                                 from_='+16205221571',
                                 body ='Suspicious Alert! Please look into it. ',
-                                to ='+919121769826'
+                                to ='+9191217169826'
                             )
     print(message.sid)
 
