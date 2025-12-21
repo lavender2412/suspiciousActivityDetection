@@ -22,4 +22,14 @@ For each processed segment/frame, the pipeline computes a **face distance** valu
 ---
 
 ## Repo structure
+suspiciousActivityDetection/
+├─ data/
+│ └─ Avenue_Dataset/
+├─ models/
+├─ src/
+├─ static/
+├─ templates/
+├─ .env.example
+├─ requirements.txt
+└─ README.md
 
