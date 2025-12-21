@@ -4,7 +4,8 @@ import keras.models
 import argparse
 from PIL import Image
 import imutils
-from message import sendsms
+from utils.notifications import sendsms
+#from google.colab.patches import cv2_imshow
 
 def mean_squared_loss(x1,x2):
     difference=x1-x2
@@ -16,9 +17,9 @@ def mean_squared_loss(x1,x2):
     mean_distance=distance/n_samples
     return mean_distance
 
-def activityDetectLive():
+def activityDetect(path):
     model=keras.models.load_model("s_model.h5")
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(path)
     print(cap.isOpened())
 
     while cap.isOpened():
@@ -39,11 +40,16 @@ def activityDetectLive():
         imagedump.resize(227,227,10)
         imagedump=np.expand_dims(imagedump,axis=0)
         imagedump=np.expand_dims(imagedump,axis=4)
+        print(imagedump)
+        print("###################")
 
         output=model.predict(imagedump)
+        print(output)
         loss=mean_squared_loss(imagedump,output)
         flag=0
 
+        if(cv2.waitKey(10) & 0xFF==ord('q')):
+            break
         if(loss>0.00068):
             print('Abnormal Event Detected')
             cv2.putText(image,"Abnormal Event",(100,80),cv2.FONT_HERSHEY_SIMPLEX,2,(0,0,255),4)
@@ -52,8 +58,5 @@ def activityDetectLive():
             sendsms()
             break
         
-        if cv2.waitKey(5) & 0xFF == 27:
-            break
     cap.release()
     cv2.destroyAllWindows()
-
