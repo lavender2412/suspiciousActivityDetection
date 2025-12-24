@@ -19,17 +19,4 @@ For each processed segment/frame, the pipeline computes a **face distance** valu
 - **Face distance > 200**  
   Trigger **activity detection** (deeper analysis of the ongoing activity).
 
----
-
-## Repo structure
-suspiciousActivityDetection/
-├─ data/
-│ └─ Avenue_Dataset/
-├─ models/
-├─ src/
-├─ static/
-├─ templates/
-├─ .env.example
-├─ requirements.txt
-└─ README.md
 
