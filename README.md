@@ -1,4 +1,4 @@
-# suspiciousActivityDetection
+# suspicious Activity Detection
 Suspicious activity detected in recorded and live surveillance
 
 A Python project that detects suspicious activity in **recorded videos and live surveillance feeds** using **head movement** cues and a simple web UI for running inference and viewing results. 
